@@ -15,7 +15,7 @@ export default {
   // },
   data() {
     return {
-      title: 'My First Vue App =D'
+      title: 'My First Vue App'
     }
   },
   methods: {
