@@ -2,20 +2,25 @@
   <h1>{{ title }}</h1>
   <input type="text" ref="name">
   <button @click="handleClick">Click me</button>
+  <aaaaa header="Sign up for the newsletter!" :text="text" theme="sale" /> <!-- header attribute is the prop (to be accepted by Modal) -->
+  <!-- <aaaaa :header="['Chris', 111]" :text="text" theme="sale" />  -->
+
 </template>
 
 <script>
 
-import Modal from './components/Modal.vue'
+import aaaaa from './components/Modal.vue'
 
 export default {
   name: "App",
-  // components: {
-  //   HelloWorld,
-  // },
+  components: {
+    aaaaa,
+  },
   data() {
     return {
-      title: 'My First Vue App'
+      title: 'My First Vue App',
+      header: 'Sign up for the newsletter!',
+      text: '1234567'
     }
   },
   methods: {
