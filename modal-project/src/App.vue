@@ -16,6 +16,14 @@
   
     <Modal theme="sale" @close="toggleModal"> <!-- This is a slot used to pass templates (not data)-->
                                               <!-- Notice no closing forward slash / -->
+
+      <template v-slot:links>      <!-- slot direct used to give this template a slot NAME -->
+                                   <!-- calling this template "links" -->
+        <a href="#">Anchor 1</a>
+        &nbsp;
+        <a href="#">Anchor 2</a>
+      </template>
+
       <h1> Header within the slot </h1>
       <p> Paragraph within the slot </p>
 

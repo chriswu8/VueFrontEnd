@@ -7,7 +7,10 @@
       <!-- h1> {{ header }} </h1> -->     <!-- dynamic prop value -->
       <!-- <p> {{ text }} </p> -->        <!-- dynamic prop value -->
 
-      <slot></slot>
+      <slot></slot> <!-- populated w/ template pass from parent's <Modal>...</Modal> -->
+      <div class="actions">
+        <slot name="links"></slot> 
+      </div>
     </div>
   </div>
 </template>
