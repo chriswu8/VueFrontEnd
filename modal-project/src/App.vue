@@ -1,20 +1,23 @@
 <template>
-  <h1>{{ title }}</h1>
+<h1>test</h1>
+  <h1>{{ title }} </h1>
   <input type="text" ref="name">
   <button @click="handleClick">Click me</button>
-  <aaaaa header="Sign up for the newsletter!" :text="text" theme="sale" /> <!-- header attribute is the prop (to be accepted by Modal) -->
-  <!-- <aaaaa :header="['Chris', 111]" :text="text" theme="sale" />  -->
+  <Modal header="Sign up for the newsletter!" :text="text" theme="sale" /> <!-- props (to be accepted by Modal child component) -->
+  <!-- Props: 1) make components more dynamically reusable by passing different content (from parent) and 
+              2) when multiple components use same data, we only have to define those data in ONE place (in parent component)-->
+  <!-- <Modal :header="['Chris', 111]" :text="text" theme="sale" />  -->
 
 </template>
 
 <script>
 
-import aaaaa from './components/Modal.vue'
+import Modal from './components/Modal.vue'
 
 export default {
   name: "App",
   components: {
-    aaaaa,
+    Modal,
   },
   data() {
     return {
@@ -44,3 +47,4 @@ export default {
   margin-top: 60px;
 }
 </style>
+

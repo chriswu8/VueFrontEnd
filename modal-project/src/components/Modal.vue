@@ -3,21 +3,21 @@
 <template>
   <div class="backdrop">
     <div class="modal" :class="{sale: theme === 'sale'}">
-      <h1>{{ header }}</h1>
-      <p>Some interesting message</p>
+      <h1>{{ header }}</h1>    <!-- dynamic prop value -->
+      <p>{{ text }}</p>        <!-- dynamic prop value -->
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  // register all props here
+  // register all props (passed from parent component), must be string
   props: ['header', 'text', 'theme']  
 };
 </script>
 
 
-<style>
+<style> /* if scoped, styles only apply to THIS component */
 .modal {
   width: 500px;
   padding: 20px;
