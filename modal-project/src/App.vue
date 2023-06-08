@@ -8,10 +8,18 @@
   <button @click="handleClick">Focus on input field</button>
   <br><br>
   <div v-if="showModal">
-    <Modal header="Hardcoded Prop Value" :text="text" theme="sale" @close="toggleModal" /> <!-- close is a custom event -->
+    <!-- <Modal header="Hardcoded Prop Value" :text="text" theme="sale" @close="toggleModal" /> --> <!-- @close is a custom event -->
     <!-- props (to be accepted by Modal child component) -->
     <!-- Props: 1) make components more dynamically reusable by passing different content (from parent) and 
                 2) when multiple components use same data, we only have to define those data in ONE place (in parent component)-->
+  
+  
+    <Modal theme="sale" @close="toggleModal"> <!-- This is a slot used to pass templates (not data)-->
+                                              <!-- Notice no closing forward slash / -->
+      <h1> Header within the slot </h1>
+      <p> Paragraph within the slot </p>
+
+    </Modal>
   </div>
   <button @click.shift="toggleModal">Toggle Modal (shift)</button> <!-- .shift event modifier: must press shift first (then click) -->
 </template>
