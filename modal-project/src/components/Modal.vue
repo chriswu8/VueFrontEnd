@@ -1,10 +1,11 @@
 // Modal component to be used in App component
 
 <template>
-  <div class="backdrop" @click="closeModal">                          <!-- listens for click before sending custom event to parent -->
+  <div class="backdrop" @click.self="closeModal">                     <!-- listens for click before sending custom event to parent -->
+                                                                      <!-- .self applies closeModal method only to the backdrop class & NOT child tags -->
     <div class="modal" :class="{sale_style: theme === 'sale'}">       <!--  custom style based on theme prop value -->
-      <h1>{{ header }}</h1>    <!-- dynamic prop value -->
-      <p>{{ text }}</p>        <!-- dynamic prop value -->
+      <h1> {{ header }} </h1>    <!-- dynamic prop value -->
+      <p> {{ text }} </p>        <!-- dynamic prop value -->
     </div>
   </div>
 </template>

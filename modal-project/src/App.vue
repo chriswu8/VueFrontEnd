@@ -13,7 +13,7 @@
     <!-- Props: 1) make components more dynamically reusable by passing different content (from parent) and 
                 2) when multiple components use same data, we only have to define those data in ONE place (in parent component)-->
   </div>
-  <button @click="toggleModal">Toggle Modal</button>
+  <button @click.shift="toggleModal">Toggle Modal (shift)</button> <!-- .shift event modifier: must press shift first (then click) -->
 </template>
 
 <script>
