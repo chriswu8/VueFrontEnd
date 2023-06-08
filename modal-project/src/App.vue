@@ -23,13 +23,34 @@
         &nbsp;
         <a href="#">Anchor 2</a>
       </template>
-
       <h1> Header within the slot </h1>
       <p> Paragraph within the slot </p>
-
     </Modal>
+
+  </div>
+
+    <div v-if="showModal2">
+    <Modal theme="chris" @close="toggleModal2"> <!-- This is a slot used to pass templates (not data)-->
+                                               <!-- Notice no closing forward slash / -->
+
+      <template v-slot:links2>      <!-- slot direct used to give this template a slot NAME -->
+                                    <!-- calling this template "links" -->
+        <a href="#">Anchor 1</a>
+        &nbsp;
+        <a href="#">Anchor 2</a>
+        &nbsp;
+        <a href="#">Anchor 3</a>
+        &nbsp;
+        <a href="#">Anchor 4</a>
+      </template>
+      <h1> Chris Wu's Header </h1>
+      <p> Chris Wu's Paragraph </p>
+    </Modal>
+
   </div>
   <button @click.shift="toggleModal">Toggle Modal (shift)</button> <!-- .shift event modifier: must press shift first (then click) -->
+  &nbsp;
+  <button @click.alt="toggleModal2">Toggle Modal (alt)</button>
 </template>
 
 <script>
@@ -47,6 +68,7 @@ export default {
       header:    "Some Amazing Header That Sells",
       text:      "Really persuasive text written by AI",
       showModal: false,
+      showModal2: false,
     };
   },
   methods: {
@@ -57,6 +79,10 @@ export default {
     },
     toggleModal() {
       this.showModal = !this.showModal;
+    }
+    ,
+    toggleModal2() {
+      this.showModal2 = !this.showModal2;
     }
   },
 };
