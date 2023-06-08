@@ -1,18 +1,24 @@
-<template>
-<h1>test</h1>
-  <h1>{{ title }} </h1>
-  <input type="text" ref="name">
-  <button @click="handleClick">Click me</button>
-  <Modal header="Sign up for the newsletter!" :text="text" theme="sale" /> <!-- props (to be accepted by Modal child component) -->
-  <!-- Props: 1) make components more dynamically reusable by passing different content (from parent) and 
-              2) when multiple components use same data, we only have to define those data in ONE place (in parent component)-->
-  <!-- <Modal :header="['Chris', 111]" :text="text" theme="sale" />  -->
+<!-- Autoformat: Shift + Option + F --> 
 
+<template>
+  <h1>{{ title }}</h1>
+  <p>Welcome!</p>
+  <input type="text" ref="name" />
+  <br><br>
+  <button @click="handleClick">Focus on input field</button>
+  <br><br>
+  <div v-if="showModal">
+    <Modal header="Hardcoded Prop Value" :text="text" theme="sale" @close="toggleModal" /> <!-- close is a custom event -->
+    <!-- props (to be accepted by Modal child component) -->
+    <!-- Props: 1) make components more dynamically reusable by passing different content (from parent) and 
+                2) when multiple components use same data, we only have to define those data in ONE place (in parent component)-->
+  </div>
+  <button @click="toggleModal">Toggle Modal</button>
 </template>
 
 <script>
-
-import Modal from './components/Modal.vue'
+// Import child components before use
+import Modal from "./components/Modal.vue";
 
 export default {
   name: "App",
@@ -21,19 +27,22 @@ export default {
   },
   data() {
     return {
-      title: 'My First Vue App',
-      header: 'Sign up for the newsletter!',
-      text: '1234567'
-    }
+      title:     "My First Vue App",
+      header:    "Some Amazing Header That Sells",
+      text:      "Really persuasive text written by AI",
+      showModal: false,
+    };
   },
   methods: {
-    handleClick()
-    {
-      console.log(this.$refs.name)
-      this.$refs.name.classList.add('active') // adds a class to ref="name" tag
-      this.$refs.name.focus() // the focus goes to ref="name" tag
+    handleClick() {
+      console.log(this.$refs.name);
+      this.$refs.name.classList.add("active");  // adds a class to ref="name" tag
+      this.$refs.name.focus();                  // the focus goes to ref="name" tag
+    },
+    toggleModal() {
+      this.showModal = !this.showModal;
     }
-  }
+  },
 };
 </script>
 

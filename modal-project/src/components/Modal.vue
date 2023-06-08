@@ -1,8 +1,8 @@
 // Modal component to be used in App component
 
 <template>
-  <div class="backdrop">
-    <div class="modal" :class="{sale: theme === 'sale'}">
+  <div class="backdrop" @click="closeModal">                          <!-- listens for click before sending custom event to parent -->
+    <div class="modal" :class="{sale_style: theme === 'sale'}">       <!--  custom style based on theme prop value -->
       <h1>{{ header }}</h1>    <!-- dynamic prop value -->
       <p>{{ text }}</p>        <!-- dynamic prop value -->
     </div>
@@ -12,7 +12,12 @@
 <script>
 export default {
   // register all props (passed from parent component), must be string
-  props: ['header', 'text', 'theme']  
+  props: ['header', 'text', 'theme'],
+  methods: {
+    closeModal() {
+      this.$emit('close') // to emit a CUSTOM event called close (to the parent, so that we can set showModal to false)
+    }
+  }  
 };
 </script>
 
@@ -33,16 +38,17 @@ export default {
   height: 100%;
 }
 .modal h1 {
-  color: #285cd7;
+  color: #285cd7; /* default <h1> text color */
+                    /* can be overridden by sale_style if line 5 check evaluates to true */
 }
 .modal p {
   font-style: normal; /* will overwrite p style in global.css */
 }
-.modal.sale {
+.modal.sale_style {
   background: rgb(226, 179, 108);
   color: black;
 } 
-.modal.sale h1 {
+.modal.sale_style h1 {
   color: white;
 }
 </style>
