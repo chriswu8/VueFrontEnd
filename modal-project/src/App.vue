@@ -7,7 +7,7 @@
   <br><br>
   <button @click="handleClick">Focus on input field</button>
   <br><br>
-  <div v-if="showModal">
+  <teleport to=".modals" v-if="showModal">
     <!-- <Modal header="Hardcoded Prop Value" :text="text" theme="sale" @close="toggleModal" /> --> <!-- @close is a custom event -->
     <!-- props (to be accepted by Modal child component) -->
     <!-- Props: 1) make components more dynamically reusable by passing different content (from parent) and 
@@ -27,9 +27,9 @@
       <p> Paragraph within the slot </p>
     </Modal>
 
-  </div>
+  </teleport>
 
-    <div v-if="showModal2">
+    <teleport to="#modals" v-if="showModal2">
     <Modal theme="chris" @close="toggleModal2"> <!-- This is a slot used to pass templates (not data)-->
                                                <!-- Notice no closing forward slash / -->
 
@@ -47,7 +47,7 @@
       <p> Chris Wu's Paragraph </p>
     </Modal>
 
-  </div>
+  </teleport>
   <button @click.shift="toggleModal">Toggle Modal (shift)</button> <!-- .shift event modifier: must press shift first (then click) -->
   &nbsp;
   <button @click.alt="toggleModal2">Toggle Modal (alt)</button>
@@ -89,7 +89,7 @@ export default {
 </script>
 
 <style>
-#app {
+#app, .modals, #modals { /** not scoped, so can style .modals and #modals, which are outside of App.vue */
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
